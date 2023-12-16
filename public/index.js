@@ -1,3 +1,25 @@
+function changeModalHeaderColor(status){
+    let modalHeader = document.getElementById('modal-header');
+    modalHeader.classList.remove('bg-warning','bg-success','bg-success','bg-danger');
+
+    switch (status) {
+        case 'ongoing':
+            modalHeader.classList.add('bg-warning');
+                break;
+        case 'On Queue':
+            modalHeader.classList.add('bg-secondary');
+                break;      
+        case 'completed':
+            modalHeader.classList.add('bg-success');
+                break;      
+        default:    
+            modalHeader.classList.add('bg-danger');
+                break;                    
+    }
+}
+
+// MAIN CONNTENT
+
 document.addEventListener('DOMContentLoaded',function() {
     const rows = document.querySelectorAll('.table tbody tr');
     rows.forEach(row => {
@@ -37,6 +59,8 @@ document.addEventListener('DOMContentLoaded',function() {
         targetDate.value = columns[4].textContent;
         category.value   = columns[5].textContent;
         modalTitle.textContent = ticketNo[0].textContent;
+
+        changeModalHeaderColor(columns[6].textContent);
     });
 });
 

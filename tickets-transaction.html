@@ -433,19 +433,105 @@
       <div class="modal fade" id="viewTicketModal" tabindex="-1" aria-labelledby="view-ticket-label" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
-
-            <!-- MODAL HEADER -->
-
-            <div class="modal-header bg-warning" id="modal-header">
-              <h1 class="modal-title fs-5" id="view-ticket-label">Modal title</h1>
+            <div class="modal-header bg-warning" id="modal-header"> <!--HEADER-->
+              <h1 class="modal-title fs-5" id="view-ticket-label">Ticket Details for <span class="fw-bold" id="modal-ticket-no">TIX-20231006 [On Going]</span></h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+               <!-- MODAL BODYYY -->
+
             <div class="modal-body">
-              ...
+              <div class="container">
+                <form action="" >
+                    <div class="row">
+
+                      <!-- category -->
+                      <label  for="category" class="col-form-label col-2 fw-bold text-end" >Category:</label>
+                      <div class="col-4">
+                        <input type="text" class="form-control form-control-sm" name="category" id="category" value="Hardware Support" disabled>
+                      </div>
+                        
+                      <!-- STATUS -->
+                      <label for="category" class="col-form-label col-2 fw-bold text-end">Status:</label>
+                      <div class="col-4">
+                        <input type="text" class="form-control form-control-sm " name="field-status" id="field-status" value="On Going" disabled required>
+                      </div>
+
+                      <!-- TITLE -->
+                    <label for="request-title" class="col-form-label col-2 fw-bold text-end">Request Title:</label>
+                    <div class="col-10">
+                      <textarea class="form-control form-control-sm" name="request-title" id="request-title" rows="1" disabled required>Additional Module Access</textarea>
+                      <div class="invalid-feedback">
+                        This field is required.
+                      </div>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <label for="ticket-description" class="col-form-label col-2 fw-bold text-end">Ticket Description:</label>
+                    <div class="col-10">
+                      <textarea class="form-control form-control-sm mb-2" name="ticket-description" id="ticket-description" rows="3" disabled required>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi esse provident mollitia aut illum perspiciatis hic sint similique consequuntur, odio aspernatur impedit excepturi praesentium architecto, voluptates dolore voluptas dolores dicta!</textarea>
+                      <div class="invalid-feedback">
+                        This field is required.
+                      </div>
+                    </div>
+
+                    <!-- DATE CREATED -->
+                    <label for="date-created" class="col-form-label col-2 fw-bold text-end">Date Created:</label>
+                    <div class="col-4">
+                      <input type="date" class="form-control form-control-sm" name="date-created" id="date-created" value="2023-10-10" disabled >
+                    </div>
+
+                    <!-- TARGET DATE -->
+                    <label for="target-date" class="col-form-label col-2 fw-bold text-end">Target Date:</label>
+                    <div class="col-4">
+                      <input type="date" class="form-control form-control-sm" name="target-date" id="target-date" value="2023-10-15" disabled required>
+                      <div class="invalid-feedback">
+                        This field is required.
+                      </div>
+                    </div>
+
+                    <!-- REQUESTED BY -->
+                    <label for="requested-by" class="col-form-label col-2 fw-bold text-end">Requested By:</label>
+                    <div class="col-4">
+                      <input type="text" class="form-control form-control-sm" name="requested-by" id="requested-by" value="John Doe" disabled required>
+                      <div class="invalid-feedback">
+                        This field is required.
+                      </div>
+                    </div>
+
+                    <!-- ASSIGNED TO -->
+                    <label for="assigned-to" class="col-form-label col-2 fw-bold text-end">Assigned To:</label>
+                    <div class="col-4">
+                      <input type="text" class="form-control form-control-sm" name="assigned-to" id="assigned-to" value="John Michael De Vera" disabled>
+                    </div>
+
+                    <!-- DEPARTMENT -->
+                    <label for="department" class="col-form-label col-2 fw-bold text-end">Department:</label>
+                    <div class="col-4">
+                      <input type="text" class="form-control form-control-sm" name="department" id="department" value="Sales Department" disabled required>
+                      <div class="invalid-feedback">
+                        Please add your department.This field is required.
+                      </div>
+                    </div>
+
+                    <!-- DATE COMPLETED -->
+                    <label for="date-completed" class="col-form-label col-2 fw-bold text-end">Date Completed:</label>
+                    <div class="col-4">
+                      <input type="text" class="form-control form-control-sm" name="date-completed" id="date-completed" value="-" disabled>
+                    </div>
+                  </div>
+                </form>
+             </div>    
             </div>
+
+            <!-- MODAL FOOTER -->
+
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-warning d-none" id="modal-btn-process" data-bs-dismiss="modal">Process Ticket</button>
+              <button type="button" class="btn btn-success d-none" id="modal-btn-complete" data-bs-dismiss="modal">Complete Ticket</button>
+              <button type="button" class="btn btn-success d-none" id="modal-btn-save" data-bs-dismiss="modal">Save</button>
+              <button type="button" class="btn btn-primary d-none" id="modal-btn-create">Create Ticket</button>
             </div>
           </div>  
         </div>
@@ -459,6 +545,8 @@
           </div>
         </div>
       </footer>
+
+    
     <script src="bootstrap-5.3.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

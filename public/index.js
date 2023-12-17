@@ -129,11 +129,15 @@ document.addEventListener('DOMContentLoaded',function() {
         columns[2].textContent = modalMain.querySelector('#department').value 
         columns[3].textContent = modalMain.querySelector('#date-created').value
         columns[4].textContent = modalMain.querySelector('#target-date').value  
-        columns[5].textContent = modalMain.querySelector('#category').value   
-        
-
-
-
+        columns[5].textContent = modalMain.querySelector('#category').value  
     });
-
+    
+    modalWindow =  document.querySelector('#viewTicketModal');
+    modalWindow.addEventListener("hidden.bs.modal", function(){
+        const inputFields = document.querySelectorAll(".form-control");
+        inputFields.forEach(input => {
+           input.setAttribute("disabled","");
+        });
+    }) 
+    
 });

@@ -78,6 +78,7 @@ function showHideModalButtons(row, state = ''){
 // MAIN CONNTENT
 
 document.addEventListener('DOMContentLoaded',function() {
+    let activeRow = null;
     const rows = document.querySelectorAll('.table tbody tr');
     rows.forEach(row => {
         const columns = row.getElementsByTagName('td');
@@ -93,6 +94,8 @@ document.addEventListener('DOMContentLoaded',function() {
     viewButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            activeRow = row;
+
             assignRowFieldvalues(row);
 
             showHideModalButtons(row);
@@ -104,6 +107,7 @@ document.addEventListener('DOMContentLoaded',function() {
     editButton.forEach(function(button){
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
+            activeRow = row;
             assignRowFieldvalues(row);
 
             const inputFields = document.querySelectorAll(".form-control");
@@ -114,4 +118,22 @@ document.addEventListener('DOMContentLoaded',function() {
 
             showHideModalButtons(row, "edit");
     });
+    // Modal-Save Button
+    mdlSaveButton = document.querySelector('#modal-btn-save');
+    mdlSaveButton.addEventListener('click', function(){
+        const columns  = activeRow.querySelectorAll('td');
+        const modalMain = document.querySelector('#viewTicketModal');
+
+        columns[0].textContent = modalMain.querySelector('#request-title').value 
+        columns[1].textContent = modalMain.querySelector('#requested-by').value 
+        columns[2].textContent = modalMain.querySelector('#department').value 
+        columns[3].textContent = modalMain.querySelector('#date-created').value
+        columns[4].textContent = modalMain.querySelector('#target-date').value  
+        columns[5].textContent = modalMain.querySelector('#category').value   
+        
+
+
+
+    });
+
 });

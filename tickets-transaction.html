@@ -16,6 +16,7 @@
     
 </head>
 <body>
+      <!-- TICKET CARDS -->
       <div class="container-fluid py-5 bg-light">
         <div class="display-3 mb-4 py-3 text-decoration-underline">Request Tickets</div>
         
@@ -68,8 +69,14 @@
 
         </div>
       </div>
-      
-      <div class=" divider"></div>
+
+      <div class="container-fluid px-4 py-2">
+        <div class="row">
+          <button type="button" class="btn btn-primary" id="add-ticket" data-bs-toggle="modal" data-bs-target="#viewTicketModal">Add Ticket</button>
+        </div>
+      </div>
+     
+
       
       <!-- ONGOING TABLE -->
       <section class="accordion container-fluid" id="accordion-table-ongoing">
@@ -531,7 +538,7 @@
               <button type="button" class="btn btn-warning d-none" id="modal-btn-process" data-bs-dismiss="modal">Process Ticket</button>
               <button type="button" class="btn btn-success d-none" id="modal-btn-complete" data-bs-dismiss="modal">Complete Ticket</button>
               <button type="button" class="btn btn-success d-none" id="modal-btn-save" data-bs-dismiss="modal">Save</button>
-              <button type="button" class="btn btn-primary d-none" id="modal-btn-create">Create Ticket</button>
+              <button type="button" class="btn btn-primary d-none" id="modal-btn-create" data-bs-dismiss="modal">Create Ticket</button>
             </div>
           </div>  
         </div>

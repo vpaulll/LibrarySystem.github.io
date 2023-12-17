@@ -79,6 +79,7 @@ function showHideModalButtons(row, state = ''){
 
 document.addEventListener('DOMContentLoaded',function() {
     let activeRow = null;
+    
     const rows = document.querySelectorAll('.table tbody tr');
     rows.forEach(row => {
         const columns = row.getElementsByTagName('td');
@@ -88,6 +89,7 @@ document.addEventListener('DOMContentLoaded',function() {
             removeButtons[1].classList.add('d-none'); //Edit
         }
     });
+
 });
     //View BUTTON
     viewButton = document.querySelectorAll('.view-ticket');
@@ -97,27 +99,10 @@ document.addEventListener('DOMContentLoaded',function() {
             activeRow = row;
 
             assignRowFieldvalues(row);
-
             showHideModalButtons(row);
-        
     });
 });
-    //EDIT BUTTON
-    editButton = document.querySelectorAll('.edit-ticket');
-    editButton.forEach(function(button){
-        button.addEventListener('click', function(){
-            let row = this.parentElement.parentElement;
-            activeRow = row;
-            assignRowFieldvalues(row);
-
-            const inputFields = document.querySelectorAll(".form-control");
-            inputFields.forEach(input => {
-                if(input.id != "date-completed" && input.id != "field-status" && input.id != "date-created" ) input.removeAttribute("disabled");
-            
-            });
-
-            showHideModalButtons(row, "edit");
-    });
+    
     // Modal-Save Button
     mdlSaveButton = document.querySelector('#modal-btn-save');
     mdlSaveButton.addEventListener('click', function(){
@@ -131,7 +116,42 @@ document.addEventListener('DOMContentLoaded',function() {
         columns[4].textContent = modalMain.querySelector('#target-date').value  
         columns[5].textContent = modalMain.querySelector('#category').value  
     });
+
+    // DELETE BUTTON
+
+    deleteButton = document.querySelectorAll('.delete-ticket');
+    deleteButton.forEach(function(button){
+        button.addEventListener('click', function(){
+            let row = this.parentElement.parentElement;
+            const modalDelete = document.querySelector("#deleteTicketModal");	
+            const confirmDelBtn = modalDelete.querySelector("#modal-btn-delete");
+            confirmDelBtn.addEventListener("click", function(){	// ACTUAL DELETE
+                row.remove();
+
+
+            });
+        });
+    });
+
+    //EDIT BUTTON
+    editButton = document.querySelectorAll('.edit-ticket');
+    editButton.forEach(function(button){
+        button.addEventListener('click', function(){
+            let row = this.parentElement.parentElement;
+            activeRow = row;
+            assignRowFieldvalues(row);
+
+            const inputFields = document.querySelectorAll(".form-control");
+            inputFields.forEach(input => {
+                if(input.id != "date-completed" && input.id != "field-status" && input.id != "date-created" ) input.removeAttribute("disabled");
+            
+            });
+            showHideModalButtons(row, "edit");
+    });
     
+
+    // HIDDEN / CLOSE EVENT
+
     modalWindow =  document.querySelector('#viewTicketModal');
     modalWindow.addEventListener("hidden.bs.modal", function(){
         const inputFields = document.querySelectorAll(".form-control");

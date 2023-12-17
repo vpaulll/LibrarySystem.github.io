@@ -48,7 +48,31 @@ function assignRowFieldvalues(row){
 }
 
 function showHideModalButtons(row, state = ''){
-    
+    const status  =  row.getElementsByTagName('td')[6].innerHTML;
+    const modalMain = document.querySelector('#viewTicketModal');
+    removeBtns = modalMain.querySelectorAll("#modal-btn-process,#modal-btn-complete,#modal-btn-save,#modal-btn-create");
+    removeBtns.forEach(btnCol => {
+    btnCol.classList.add('d-none');
+  });
+
+    if(status.includes("On Queue")){
+        if(state == ""){
+            showBtns = modalMain.querySelector("#modal-btn-process");
+            showBtns.classList.remove('d-none');
+        } else {
+            showBtns = modalMain.querySelector("#modal-btn-save");
+            showBtns.classList.remove('d-none');
+        }
+       
+    }else if(status.includes("ongoing")) {
+        if(state == ""){
+            showBtns = modalMain.querySelector("#modal-btn-complete");
+            showBtns.classList.remove('d-none');
+        } else {
+            showBtns = modalMain.querySelector("#modal-btn-save");
+            showBtns.classList.remove('d-none');
+        }
+    }
 }
 
 // MAIN CONNTENT
@@ -70,12 +94,11 @@ document.addEventListener('DOMContentLoaded',function() {
         button.addEventListener('click', function(){
             let row = this.parentElement.parentElement;
             assignRowFieldvalues(row);
+
+            showHideModalButtons(row);
         
     });
-    
-    
 });
-
     //EDIT BUTTON
     editButton = document.querySelectorAll('.edit-ticket');
     editButton.forEach(function(button){
@@ -88,5 +111,7 @@ document.addEventListener('DOMContentLoaded',function() {
                 if(input.id != "date-completed" && input.id != "field-status" && input.id != "date-created" ) input.removeAttribute("disabled");
             
             });
+
+            showHideModalButtons(row, "edit");
     });
 });

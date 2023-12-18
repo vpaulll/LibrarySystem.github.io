@@ -319,7 +319,7 @@ function addTicketRecord() {
                       <button class="btn btn-danger delete-ticket" >Delete</button>
                     </td>`;
   
-  generateToast("text-bg-warning",`Ticket ${newTicketNo} added`);
+  generateToast("text-bg-warning",`Book Record ${newTicketNo} added`);
 }
 
 
@@ -445,7 +445,7 @@ document.addEventListener('DOMContentLoaded', function() {
       confirmDelBtn.addEventListener("click", function(){
         myModal.hide();
         row.remove();        
-        generateToast("text-bg-danger",`Book <strong>${ticketNo[0].textContent}</strong> DELETED`);
+        generateToast("text-bg-danger",`Book Record <strong>${ticketNo[0].textContent}</strong> DELETED`);
       });
       
     });
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       </td>`;
     
     activeRow.remove();
-    generateToast("text-bg-success",`Book <strong>${ticketNo[0].textContent}</strong> tag as COMPLETE`);
+    generateToast("text-bg-success",`Book Record <strong>${ticketNo[0].textContent}</strong> tag as COMPLETE`);
   });
 
   // PROCESS TICKET BUTTON
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
                       </td>`;
     
     activeRow.remove();
-    generateToast("text-bg-warning",`Book ${ticketNo[0].textContent} tag as <strong>ONGOING</strong>`);
+    generateToast("text-bg-warning",`Book Record ${ticketNo[0].textContent} tag as <strong>ONGOING</strong>`);
   });
 
   // SAVE TICKET BUTTON
@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', function() {
     columns[1].textContent = requestedBy.value 
     columns[2].textContent = department.value  
     
-    generateToast("text-bg-success",`Book ${ticketNo[0].textContent} updated`); 
+    generateToast("text-bg-success",`Book Record ${ticketNo[0].textContent} updated`); 
   });
 
  

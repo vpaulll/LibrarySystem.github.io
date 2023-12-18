@@ -32,7 +32,7 @@ function changeModalHeaderColor(status){
     default:
       modalHeader.classList.add('bg-danger');
       fstatus.classList.add('text-bg-danger');
-      break;                    
+      break;                   
   } 
 }
 /** 

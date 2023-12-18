@@ -1,10 +1,11 @@
-let toastCtr = 0;
+
 /** 
  * changeModalHeaderColor
  * -changes modal header color based on row status
  * 
  * @param {string} status 
  */
+let toastCtr = 0;
 function changeModalHeaderColor(status){
   let modalHeader = document.getElementById('modal-header');
   modalHeader.classList.remove('bg-warning','bg-success','bg-success','bg-primary','bg-danger');
